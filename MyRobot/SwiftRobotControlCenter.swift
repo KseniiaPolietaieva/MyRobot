@@ -33,8 +33,7 @@ class SwiftRobotControlCenter: RobotControlCenter {
             put()
             turnLeft()
             doubleMove()
-        }
-        else {
+        } else {
             turnRight()
             put()
         }
@@ -51,8 +50,7 @@ class SwiftRobotControlCenter: RobotControlCenter {
         while noCandyPresent {
             if frontIsClear {
                 move()
-            }
-            else {
+            } else {
                 break
             }
             turnLeft()
