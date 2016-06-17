@@ -16,7 +16,7 @@ class SwiftRobotControlCenter: RobotControlCenter {
     
     override func viewDidLoad() {
         
-        levelName = "L3c"
+        levelName = "L2H"
         
         super.viewDidLoad()
     }
@@ -62,24 +62,56 @@ class SwiftRobotControlCenter: RobotControlCenter {
         
         super.viewDidAppear(animated)
         
-        moveAroundThePeaks()
+        moveAroundTheMap()
         
     }
     
-    func moveAroundThePeaks() {
-        for _ in 0..<14 {
-            makeStep()
+    func moveAroundTheMap() {
+        for _ in 0..<4 {
+            turnLeft()
+            fillUpCookiesLine()
+            returnToTheLineBeggining()
+            turnLeft()
+            moveToTheNextLine()
+            
+            
+        }
+    }
+    func moveToTheNextLine() {
+        for _ in 0..<4 {
+            if frontIsClear {
+                move()
+            }
+            else {
+                break
+            }
         }
     }
     
-    func makeStep() {
-        if frontIsClear {
+    func fillUpCookiesLine() {
+        while frontIsClear {
+            if noCandyPresent {
+                put()
+            }
+            else {
+                move()
+                
+            }
+        }
+        if noCandyPresent {
+            put()
+        }
+    }
+    
+    func returnToTheLineBeggining() {
+        turnAround()
+        while frontIsClear {
             move()
         }
-        else {
-            moveAroundPeak()
-            
-        }
+    }
+    func turnAround() {
+        turnRight()
+        turnRight()
     }
     
     func moveAroundPeak() {
